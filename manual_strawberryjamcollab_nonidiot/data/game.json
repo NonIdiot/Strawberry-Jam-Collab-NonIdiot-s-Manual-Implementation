@@ -1,0 +1,7 @@
+{
+  "$schema": "https://github.com/ManualForArchipelago/Manual/raw/main/schemas/Manual.game.schema.json",
+  "game": "StrawberryJamCollab",
+  "creator": "NonIdiot",
+  "filler_item_name": "Oops This Shouldn't Show Up",
+  "starting_items": []
+}

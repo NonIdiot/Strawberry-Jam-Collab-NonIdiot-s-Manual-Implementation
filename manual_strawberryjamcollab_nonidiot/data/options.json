@@ -1,0 +1,261 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ManualForArchipelago/Manual/main/schemas/Manual.options.schema.json",
+    "_comment": "Issue located. None of the options actually disable locations other than the Skip Prologue option. This will need to be fixed via hooks.",
+    "core": {
+        "death_link": {
+            "default": false
+        }
+    },
+    "user": {
+        "win_condition":{
+            "display_name": "Win Condition",
+            "description": [
+                "Choose which condition is needed to win. [Default: Heartside Clear]",
+                "- Heartside Clear - Requires the player to collect the amount of Mini-Hearts for the chosen lobby, and then beat the Heartside.",
+                "- Heartside Golden Berry - Requires the player to collect the amount of Mini-Hearts for the chosen lobby, and then collect the Golden Berry in the Heartside.",
+                "- All Beginner Levels Cleared (No Heartside) - Requires the player to clear all non-Heartside levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)",
+                "- All Beginner Levels Cleared - Requires the player to clear all levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)",
+                "- Berry Hunt - Requires the player to collect a certain percentage of the strawberries in the item pool.",
+                "- Berry Collection - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.",
+                "- Catventure - Requires the player to pet all cats. (Automatically enables Catsanity.)"
+            ],
+            "type": "Choice",
+            "values": {
+                "Heartside Clear": 0,
+                "Heartside Golden Berry": 1,
+                "All Beginner Levels Cleared (No Heartside)": 2,
+                "All Beginner Levels Cleared": 3,
+                "Berry Hunt": 4,
+                "Berry Collection": 5,
+                "Catventure": 6
+            },
+            "group": "Win Condition and Level Skipping"
+        },
+        "berry_percent":{
+            "display_name": "Berry Hunt/Collection Percentage",
+            "description": [
+                "The percentage of strawberry items/locations for Berry Hunt and Berry Collection respectively that are needed to goal. [Default: 80]"
+            ],
+            "type": "Range",
+            "range_start": 0,
+            "range_end": 100,
+            "values": {
+                "A Tenth Of The Strawberries": 10,
+                "A Quarter Of The Strawberries": 25,
+                "Half Of The Strawberries": 50,
+                "Three Quarters Of The Strawberries": 75,
+                "A Default Portion Of The Strawberries": 80,
+                "Most Of The Strawberries": 95,
+                "Literally Every Single Strawberry": 100
+            },
+            "group": "Win Condition and Level Skipping"
+        },
+        "max_difficulty":{
+            "display_name": "Maximum Difficulty",
+            "description": [
+                "What lobby is selected as the highest difficulty. [Default: Beginner Lobby]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Beginner Lobby": 0
+            },
+            "default": 0,
+            "group": "Win Condition and Level Skipping"
+        },
+        "included_lobbies":{
+            "display_name": "Included Lobbies",
+            "description": [
+                "Decides whether only the maximum difficulty lobby or all lobbies under and including the maximum difficulty lobby are included in randomization. [Default: Selected and Below (Progression-Locked)]",
+                "- Only Maximum Difficulty - Makes only the lobby selected as the Maximum Difficulty included in the randomization. For instance, if the Maximum Difficulty is selected as Advanced Lobby, all other lobbies will not be included in giving checks or recieving items.",
+                "- Selected and Below - Makes the lobby selected as Maximum Difficulty and all other lobbies below it included in the randomization. For instance, if the Maximum Difficulty is selected as Advanced Lobby, then the Beginner, Intermediate, and Advanced Lobbies will all be included in giving checks and recieving items.",
+                "- Selected and Below (Progression-Locked) - Same as Selected and Below, but making it so that future lobbies can only be entered once the Heartside of the previous lobby is completed. For example, the Intermediate Lobby cannot be entered until the Beginner Lobby's Heartside is completed, the Advanced Lobby cannot be entered until the Intermediate Lobby's Heartside is completed, etc."
+            ],
+            "type": "Choice",
+            "values": {
+                "Only Maximum Difficulty": 0,
+                "Selected and Below": 1,
+                "Selected and Below (Progression-Locked)": 2
+            },
+            "default": 2,
+            "group": "Win Condition and Level Skipping"
+        },
+        "skip_prologue":{
+            "display_name": "Skip Prologue",
+            "description": [
+                "Makes all movement restrictions not apply for Prologue. When off, the player is given two locations at the start of Prologue, as you need one of the left dashes and one of the right dashes to clear Prologue and move on to any Lobby. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Win Condition and Level Skipping"
+        },
+        "skip_certain_levels":{
+            "display_name": "Skip Certain Levels",
+            "_comment": "(Alt Name: That Frickin Level That I Hate)",
+            "description": [
+                "Disables any checks from the configured levels that would rather be skipped by some. Note that you may be required to beat these levels for certain goals (in which case, movement restrictions do not apply for these levels), however the items that come from the level clears will be guaranteed junk, and the Mini-Heart is guaranteed to be a Mini-Heart regardless of other settings. [Default: Off]",
+                "- Off - Doesn't disable any checks from the below listed levels.",
+                "- No Dropzle - Replaces all item locations from Dropzle with a \"Pixel Perfect\" junk item.",
+                "- No Dropzle or A Gift From The Stars - Replaces all item locations from Dropzle with a \"Pixel Perfect\" junk item and all item locations from A Gift From The Stars with a \"Borrowed Time\" junk item."
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "No Dropzle": 1,
+                "No Dropzle or A Gift From The Stars": 2
+            },
+            "default": 0,
+            "group": "Win Condition and Level Skipping"
+        },
+        "skip_gyms":{
+            "display_name": "Skip Gyms",
+            "description": [
+                "Disables any checks from gyms. [Default: Off]"
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Win Condition and Level Skipping"
+        },
+
+
+
+        "dashsanity":{
+            "display_name": "Dashsanity",
+            "description": [
+                "Makes each dash direction a check, rather than making all dashes as a single check. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Locations and Items"
+        },
+        "progressive_grabbing":{
+            "display_name": "Progressive Grabbing",
+            "description": [
+                "Makes Grabbing and Neutral Jumps into two Progressive Grabbing checks, where having one allows Neutral Jumps and having two allows Neutral Jumps and Grabbing. When off, the Grabbing and Neutral Jumps are separate items. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Locations and Items"
+        },
+        "heartsanity":{
+            "display_name": "Heartsanity",
+            "description": [
+                "Shuffles each Mini-Heart into the pool, requiring all of a lobby's corresponding Mini-Heart items to be collected before being able to get past their Heart Door. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Locations and Items"
+        },
+        "heartsanity_extra_hearts":{
+            "display_name": "Include Extra Heartsanity Hearts",
+            "description": [
+                "If Heartsanity is enabled, adds a chosen amount of additional Mini-Hearts for each lobby. The maximum is 10. [Default: 5]"
+            ],
+            "type": "Range",
+            "range_start": 0,
+            "range_end": 10,
+            "values": {
+                "Off": 0,
+                "A Pair": 2,
+                "Default Amount": 5,
+                "Maximum Overdrive!": 10
+            },
+            "group": "Locations and Items"
+        },
+        "berrysanity":{
+            "display_name": "Berrysanity",
+            "description": [
+                "Shuffles each Strawberry into the pool. May cause issues if this option and too many other options are disabled. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Locations and Items"
+        },
+        "region_locking":{
+            "display_name": "Region Locking",
+            "description": [
+                "Prevents the player from entering or standing on certain areas until the corresponding Region Key item is acquired. This can make multiworld Spheres smaller, allowing for less going back to levels you've been in already. [Default: On]"
+            ],
+            "type": "Toggle",
+            "default": true,
+            "group": "Locations and Items"
+        },
+        "binosanity":{
+            "display_name": "Binosanity",
+            "description": [
+                "Makes looking through each binoculars a location. [Default: Off]"
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Locations and Items"
+        },
+        "catsanity":{
+            "display_name": "Catsanity",
+            "description": [
+                "Makes petting each cat a location. [Default: Off]"
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Locations and Items"
+        },
+        "keysanity":{
+            "display_name": "Keysanity",
+            "description": [
+                "Makes collecting each key a location, and the ability to use each key an item. [Default: Off]"
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Locations and Items"
+        },
+        "carsanity":{
+            "display_name": "Carsanity",
+            "description": [
+                "Makes jumping on each car a location. [Default: Off]"
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Locations and Items"
+        },
+        "enable_silvers_goldens":{
+            "display_name": "Enable Silvers/Goldens",
+            "_comment": "Note to self: Implement rainbow berries sometime.",
+            "description": [
+                "Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]",
+                "- Off - Makes silvers and goldens not give checks.",
+                "- Beginner Silvers Only - Makes silvers and rainbows from the Beginner Lobby give checks.",
+                "- Beginner Silvers/Goldens Only - Makes silvers, rainbows, and goldens from the Beginner Lobby give checks."
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Beginner Silvers Only": 1,
+                "Beginner Silvers/Goldens Only": 2
+            },
+            "default": 0,
+            "group": "Locations and Items"
+        },
+
+
+
+        "seeing_is_believing":{
+            "display_name": "Makes the way that Seeing Is Believing is required to be played be differently based on what this option is configured to. [Default: Blindfold Cutters]",
+            "description": [
+                "Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]",
+                "- Singleplayer Intended - Makes Seeing Is Believing require the player to play in NotYourBadeline's \"Singleplayer Mode\", making logic only account for listening to instructions.",
+                "- Blindfold Cutters - Same as Singleplayer Intended, except for after the player acquires the Blindfold Cutters, they are allowed to play through the map without \"Singleplayer Mode\".",
+                "- Blindfold Cutters (Hard Mode) - Same as Blindfold Cutters, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress.",
+                "- Pre-Cut Blindfolds - Allows the player to play through Seeing Is Believing however they'd like.",
+                "- Pre-Cut Blindfolds (Hard Mode) - Same as Pre-Cut Blindfolds, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress."
+            ],
+            "type": "Choice",
+            "values": {
+                "Singleplayer Intended": 0,
+                "Blindfold Cutters": 1,
+                "Blindfold Cutters (Hard Mode)": 2,
+                "Pre-Cut Blindfolds": 3,
+                "Pre-Cut Blindfolds (Hard Mode)": 4
+            },
+            "default": 0,
+            "group": "Level-Specific Options"
+        }
+    }
+}

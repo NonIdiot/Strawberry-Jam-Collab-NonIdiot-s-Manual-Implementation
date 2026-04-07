@@ -1,0 +1,181 @@
+[
+  {
+    "count": 21,
+    "name": "Blue Mini-Heart",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 54,
+    "name": "Blue Strawberry",
+    "category": ["CategoryStrawberries"],
+    "filler": true
+  },
+  {
+    "count": 1,
+    "name": "Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Grab",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Neutral Jump",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Up Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Upright Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Right Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Downright Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Down Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Downleft Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Left Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Upleft Dash",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 2,
+    "name": "Progressive Grabbing",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Eroded Passage Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Tidepools Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Pinwheel Bay Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Bamboo Forest Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Abandoned Quarry Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Subterranean Forest Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Firefly's Domain Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Moisty Caves Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Crystal Origin Key",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Blindfold Cutters",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Cassette Cliffs - Key 1",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "Cassette Cliffs - Key 2",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "paint - Key 1",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "A Gift From The Stars - Key 1",
+    "category": [],
+    "progression": true
+  },
+  {
+    "count": 1,
+    "name": "A Gift From The Stars - Key 2",
+    "category": []
+  },
+  {
+    "count": 6,
+    "name": "Collapsing Skyline - Mini Berry",
+    "category": [],
+    "progression": true
+  }
+]
