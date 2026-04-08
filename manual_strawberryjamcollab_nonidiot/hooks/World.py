@@ -81,7 +81,7 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
 
     for region in multiworld.regions:
         if region.player == player:
-            for location in list(region.locations):
+            for location in list(region.locations).copy():
                 if location.name in locationNamesToRemove:
                     region.locations.remove(location)
 
@@ -170,7 +170,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     #             remove_specific_item(item_pool, i)
 
     for itemName in itemNamesToRemove:
-        for i in item_pool:
+        for i in item_pool.copy():
             if (i.name == itemName):
                 remove_specific_item(item_pool, i)
 
@@ -198,7 +198,7 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
     #     item.name = "Pale Strawberry"
 
     for itemName in itemNamesToPale:
-        for i in item_pool:
+        for i in item_pool.copy():
             if (i.name == itemName):
                 # i.name = "Pale Strawberry"
                 remove_specific_item(item_pool, i)
