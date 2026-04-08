@@ -69,7 +69,7 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerSilver"]
     if (get_option_value(multiworld, player, "enable_silvers_goldens") != 2 and (IntermediateLobbyIncluded(world, multiworld, player) == True or get_option_value(multiworld, player, "win_condition") != 1)):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGolden"]
-    if (get_option_value(multiworld, player, "skip_gyms") == 0):
+    if (get_option_value(multiworld, player, "skip_gyms") == 1):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymBino"]
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymMastery"]
     if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
@@ -193,9 +193,14 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     itemNamesToPale: list[str] = ["Oops This Shouldn't Show Up"] # List of item names
+    # for itemName in itemNamesToPale:
+    #     item = next(i for i in item_pool if i.name == itemName)
+    #     item.name = "Pale Strawberry"
+
     for itemName in itemNamesToPale:
-        item = next(i for i in item_pool if i.name == itemName)
-        item.name = "Pale Strawberry"
+        for i in item_pool:
+            if (i.name == itemName):
+                i.name = "Pale Strawberry"
         
     return item_pool
 
