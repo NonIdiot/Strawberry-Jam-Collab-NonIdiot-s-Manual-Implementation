@@ -31,7 +31,11 @@ import logging
 ## The fill_slot_data method will be used to send data to the Manual client for later use, like deathlink.
 ########################################################################################
 
+def BeginnerLobbyIncluded(world: World, multiworld: MultiWorld, player: int):
+    return get_option_value(multiworld, player, "included_lobbies") != 0 or get_option_value(multiworld, player, "max_difficulty") == 0
 
+def IntermediateLobbyIncluded(world: World, multiworld: MultiWorld, player: int):
+    return False
 
 # Use this function to change the valid filler items to be created to replace item links or starting items.
 # Default value is the `filler_item_name` from game.json
@@ -54,6 +58,25 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
     # Use this hook to remove locations from the world
     locationNamesToRemove: list[str] = [] # List of location names
 
+    if (get_option_value(multiworld, player, "binosanity") == 0):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymBino"]
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerBino"]
+    if (get_option_value(multiworld, player, "catsanity") == 0 and get_option_value(multiworld, player, "win_condition") != 6):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerCat"]
+    if (get_option_value(multiworld, player, "carsanity") == 0):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerCar"]
+    if (get_option_value(multiworld, player, "enable_silvers_goldens") == 0):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerSilver"]
+    if (get_option_value(multiworld, player, "enable_silvers_goldens") != 2 and (IntermediateLobbyIncluded(world, multiworld, player) == True or get_option_value(multiworld, player, "win_condition") != 1)):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerGolden"]
+    if (get_option_value(multiworld, player, "skip_gyms") == 0):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymBino"]
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymMastery"]
+    if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingIsBelievingBerry"]
+    if (BeginnerLobbyIncluded(world, multiworld, player) == False):
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerALL"]
+    
     # Add your code here to calculate which locations to remove
 
     for region in multiworld.regions:
@@ -82,7 +105,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     # Use this hook to remove items from the item pool
     itemNamesToRemove: list[str] = [] # List of item names
 
-    if (get_option_value(multiworld, player, "region_locking")):
+    if (get_option_value(multiworld, player, "region_locking") == 0):
         itemNamesToRemove.append("Eroded Passage Key")
         itemNamesToRemove.append("Tidepools Key")
         itemNamesToRemove.append("Pinwheel Bay Key")
@@ -92,7 +115,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         itemNamesToRemove.append("Firefly's Domain Key")
         itemNamesToRemove.append("Moisty Caves Key")
         itemNamesToRemove.append("Crystal Origin Key")
-    if (get_option_value(multiworld, player, "dashsanity")):
+    if (get_option_value(multiworld, player, "dashsanity") == 1):
         itemNamesToRemove.append("Dash")
     else:
         itemNamesToRemove.append("Up Dash")
@@ -103,28 +126,58 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         itemNamesToRemove.append("Downleft Dash")
         itemNamesToRemove.append("Left Dash")
         itemNamesToRemove.append("Upleft Dash")
-    if (get_option_value(multiworld, player, "progressive_grabbing")):
+    if (get_option_value(multiworld, player, "progressive_grabbing") == 1):
         itemNamesToRemove.append("Grab")
         itemNamesToRemove.append("Neutral Jump")
     else:
         itemNamesToRemove.append("Progressive Grabbing")
     if (get_option_value(multiworld, player, "seeing_is_believing") != 1 and get_option_value(multiworld, player, "seeing_is_believing") != 2):
         itemNamesToRemove.append("Blindfold Cutters")
+    if (BeginnerLobbyIncluded == False):
+        itemNamesToRemove.append("Eroded Passage Key")
+        itemNamesToRemove.append("Tidepools Key")
+        itemNamesToRemove.append("Pinwheel Bay Key")
+        itemNamesToRemove.append("Bamboo Forest Key")
+        itemNamesToRemove.append("Blindfold Cutters")
+        itemNamesToRemove.append("Blue Mini-Heart")
+        itemNamesToRemove.append("Blue Strawberry")
+        itemNamesToRemove.append("Cassette Cliffs - Key 1")
+        itemNamesToRemove.append("Cassette Cliffs - Key 2")
+        itemNamesToRemove.append("paint - Key 1")
+        itemNamesToRemove.append("A Gift From The Stars - Key 1")
+        itemNamesToRemove.append("A Gift From The Stars - Key 2")
+        itemNamesToRemove.append("Collapsing Skyline - Mini Berry")
+    if (IntermediateLobbyIncluded == False):
+        itemNamesToRemove.append("Abandoned Quarry Key")
+        itemNamesToRemove.append("Subterranean Forest Key")
+        itemNamesToRemove.append("Firefly's Domain Key")
+        itemNamesToRemove.append("Moisty Caves Key")
+        itemNamesToRemove.append("Crystal Origin Key")
 
     # Add your code here to calculate which items to remove.
     #
     # Because multiple copies of an item can exist, you need to add an item name
     # to the list multiple times if you want to remove multiple copies of it.
 
-    for itemName in itemNamesToRemove:
-        item = next(i for i in item_pool if i.name == itemName)
-        remove_specific_item(item_pool, item)
+    heartItem = next(i for i in item_pool if i.name == "Blue Mini-Heart")
+    # for itemName in itemNamesToRemove:
+    #     item = next(i for i in item_pool if i.name == itemName)
+    #     remove_specific_item(item_pool, item)
+    
+    # for i in item_pool:
+    #     for itemName in itemNamesToRemove:
+    #         if (i.name == itemName):
+    #             remove_specific_item(item_pool, i)
 
-    item = next(i for i in item_pool if i.name == "Blue Mini-Heart")
+    for itemName in itemNamesToRemove:
+        for i in item_pool:
+            if (i.name == itemName):
+                remove_specific_item(item_pool, i)
+
     if (get_option_value(multiworld, player, "heartsanity_extra_hearts") != 0):
         extra_hearts_so_far = 0
         while (extra_hearts_so_far != get_option_value(multiworld, player, "heartsanity_extra_hearts")):
-            item_pool.append(item)
+            item_pool.append(heartItem)
             extra_hearts_so_far += 1
 
     return item_pool
