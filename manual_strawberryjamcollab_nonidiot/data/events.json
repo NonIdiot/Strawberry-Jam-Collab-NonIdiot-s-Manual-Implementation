@@ -1,5 +1,5 @@
 [
-  { "name": "EventBeginnerLobby", "category": [], "requires": "{YamlEnabled(skip_prologue)} or ((|EventUR| or |EventR| or |EventDR|) and (|EventUL| or |EventL| or |EventDL|))", "visible": true },
+  { "name": "EventBeginnerLobby", "category": [], "copy_location": "Prologue - Clear", "visible": true },
   { "name": "EventErodedPassage", "category": [], "requires": "|EventBeginnerLobby| and ({YamlDisabled(region_locking)} or |Eroded Passage Key|)"},
   { "name": "EventTidepools", "category": [], "requires": "|EventBeginnerLobby| and ({YamlDisabled(region_locking)} or |Tidepools Key|)"},
   { "name": "EventPinwheelBay", "category": [], "requires": "|EventBeginnerLobby| and ({YamlDisabled(region_locking)} or |Pinwheel Bay Key|)"},

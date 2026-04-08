@@ -7,7 +7,7 @@
   },
   { "name": "Prologue - Starting Item 1", "category": ["CategoryPrologueStartingItems"], "requires": "" },
   { "name": "Prologue - Starting Item 2", "category": ["CategoryPrologueStartingItems"], "requires": "" },
-  { "name": "Prologue - Clear", "category": [], "requires": "|EventBeginnerLobby|" },
+  { "name": "Prologue - Clear", "category": [], "requires": "{YamlEnabled(skip_prologue)} or ((|EventUR| or |EventR| or |EventDR|) and (|EventUL| or |EventL| or |EventDL|))" },
   { "name": "Beginner Lobby - Tidepools Cat", "category": [], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventTidepools| and |EventPinwheelBay| and |EventBambooForest| and |EventG|" },
   { "name": "Beginner Lobby - Bamboo Forest Cat", "category": [], "requires": "|EventBeginnerLobby| and |EventBambooForest| and |EventU|" },
   { "name": "Beginner Lobby - Shrine Entrance Cat", "category": [], "requires": "|EventBeginnerLobby| and |Blue Mini-Heart:21|" },

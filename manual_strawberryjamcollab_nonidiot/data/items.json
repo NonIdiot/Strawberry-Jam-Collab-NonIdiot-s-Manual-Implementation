@@ -12,6 +12,12 @@
     "filler": true
   },
   {
+    "count": 0,
+    "name": "Pale Strawberry",
+    "category": ["CategoryStrawberries"],
+    "filler": true
+  },
+  {
     "count": 1,
     "name": "Dash",
     "category": [],

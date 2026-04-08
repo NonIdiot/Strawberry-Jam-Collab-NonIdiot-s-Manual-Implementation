@@ -5,6 +5,7 @@ from BaseClasses import MultiWorld, CollectionState, Item
 
 # Object classes from Manual -- extending AP core -- representing items and locations that are used in generation
 from ..Items import ManualItem
+from ..Helpers import get_option_value
 from ..Locations import ManualLocation
 
 # Raw JSON data from the Manual apworld, respectively:
@@ -81,6 +82,35 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     # Use this hook to remove items from the item pool
     itemNamesToRemove: list[str] = [] # List of item names
 
+    if (get_option_value(multiworld, player, "region_locking")):
+        itemNamesToRemove.append("Eroded Passage Key")
+        itemNamesToRemove.append("Tidepools Key")
+        itemNamesToRemove.append("Pinwheel Bay Key")
+        itemNamesToRemove.append("Bamboo Forest Key")
+        itemNamesToRemove.append("Abandoned Quarry Key")
+        itemNamesToRemove.append("Subterranean Forest Key")
+        itemNamesToRemove.append("Firefly's Domain Key")
+        itemNamesToRemove.append("Moisty Caves Key")
+        itemNamesToRemove.append("Crystal Origin Key")
+    if (get_option_value(multiworld, player, "dashsanity")):
+        itemNamesToRemove.append("Dash")
+    else:
+        itemNamesToRemove.append("Up Dash")
+        itemNamesToRemove.append("Upright Dash")
+        itemNamesToRemove.append("Right Dash")
+        itemNamesToRemove.append("Downright Dash")
+        itemNamesToRemove.append("Down Dash")
+        itemNamesToRemove.append("Downleft Dash")
+        itemNamesToRemove.append("Left Dash")
+        itemNamesToRemove.append("Upleft Dash")
+    if (get_option_value(multiworld, player, "progressive_grabbing")):
+        itemNamesToRemove.append("Grab")
+        itemNamesToRemove.append("Neutral Jump")
+    else:
+        itemNamesToRemove.append("Progressive Grabbing")
+    if (get_option_value(multiworld, player, "seeing_is_believing") != 1 and get_option_value(multiworld, player, "seeing_is_believing") != 2):
+        itemNamesToRemove.append("Blindfold Cutters")
+
     # Add your code here to calculate which items to remove.
     #
     # Because multiple copies of an item can exist, you need to add an item name
@@ -89,6 +119,13 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     for itemName in itemNamesToRemove:
         item = next(i for i in item_pool if i.name == itemName)
         remove_specific_item(item_pool, item)
+
+    item = next(i for i in item_pool if i.name == "Blue Mini-Heart")
+    if (get_option_value(multiworld, player, "heartsanity_extra_hearts") != 0):
+        extra_hearts_so_far = 0
+        while (extra_hearts_so_far != get_option_value(multiworld, player, "heartsanity_extra_hearts")):
+            item_pool.append(item)
+            extra_hearts_so_far += 1
 
     return item_pool
 
@@ -102,6 +139,11 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
 
 # The complete item pool prior to being set for generation is provided here, in case you want to make changes to it
 def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
+    itemNamesToPale: list[str] = ["Oops This Shouldn't Show Up"] # List of item names
+    for itemName in itemNamesToPale:
+        item = next(i for i in item_pool if i.name == itemName)
+        item.name = "Pale Strawberry"
+        
     return item_pool
 
 # Called before rules for accessing regions and locations are created. Not clear why you'd want this, but it's here.
