@@ -200,7 +200,9 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
     for itemName in itemNamesToPale:
         for i in item_pool:
             if (i.name == itemName):
-                i.name = "Pale Strawberry"
+                # i.name = "Pale Strawberry"
+                remove_specific_item(item_pool, i)
+                item_pool.append(world.create_item("Pale Strawberry"))
         
     return item_pool
 
