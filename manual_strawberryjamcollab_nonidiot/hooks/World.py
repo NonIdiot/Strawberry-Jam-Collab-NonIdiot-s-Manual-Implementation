@@ -73,7 +73,7 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymBino"]
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymMastery"]
     if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
-        locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingIsBelievingBerry"]
+        locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingBelieving"]
     if (BeginnerLobbyIncluded(world, multiworld, player) == False):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerALL"]
     
