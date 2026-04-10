@@ -15,6 +15,5 @@ Some basic information to know:
 - You may use the Debug Map (press F6) to warp past the Heart Gate in a lobby if you have enough of the lobby's Mini-Hearts in the Archipelago. However, it is discouraged to use for any purposes other than this.
 
 Additional things to know, due to this being a work in progress:
-- Turning Heartsanity and Berrysanity off is not currently supported, nor is skipping Dropzle/A Gift From The Stars.
 - Only Beginner Lobby is supported currently, however it is planned to include at least Intermediate and Advanced Lobbies too.
 - Not all out-of-logic stuff is inherently a bug. If you get an item before you're supposed to in-logic without ignoring keys or movement restrictions, you can press F1 in the Manual client to allow out-of-logic location checking. Most of the out-of-logic stuff is due to either silly oversight, or just doing a trick too many times and giving up to assume that the trick is Low Grandmaster or higher.
