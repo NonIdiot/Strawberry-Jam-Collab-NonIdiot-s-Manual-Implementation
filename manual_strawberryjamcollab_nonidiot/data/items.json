@@ -174,14 +174,21 @@
     "progression": true
   },
   {
-    "count": 1,
-    "name": "A Gift From The Stars - Key 2",
-    "category": []
-  },
-  {
     "count": 6,
-    "name": "Collapsing Skyline - Mini Berry",
+    "name": "Collapsing Skyline - Mini-Berry",
     "category": [],
     "progression": true
+  },
+  {
+    "count": 0,
+    "name": "Pixel Perfect",
+    "category": [],
+    "filler": true
+  },
+  {
+    "count": 0,
+    "name": "Borrowed Time",
+    "category": [],
+    "filler": true
   }
 ]

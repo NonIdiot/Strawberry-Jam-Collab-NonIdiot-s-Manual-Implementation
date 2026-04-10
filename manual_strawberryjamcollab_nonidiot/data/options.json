@@ -156,15 +156,17 @@
             "values": {
                 "Off": 0,
                 "A Pair": 2,
-                "Default Amount": 5,
+                "Moderate Amount": 5,
                 "Maximum Overdrive!": 10
             },
+            "default": 2,
             "group": "Locations and Items"
         },
         "berrysanity":{
             "display_name": "Berrysanity",
             "description": [
-                "Shuffles each Strawberry into the pool. May cause issues if this option and too many other options are disabled. [Default: On]"
+                "Shuffles each Strawberry into the pool. May cause issues if this option and too many other options are disabled. [Default: On]",
+                "Also note that playing without this nor Heartsanity may make most levels only useful for your win condition requirements and have no checks from other worlds."
             ],
             "type": "Toggle",
             "default": true,
@@ -182,7 +184,7 @@
         "binosanity":{
             "display_name": "Binosanity",
             "description": [
-                "Makes looking through each binoculars a location. [Default: Off]"
+                "Makes looking through each set of binoculars a location. [Default: Off]"
             ],
             "type": "Toggle",
             "default": false,
@@ -200,7 +202,8 @@
         "keysanity":{
             "display_name": "Keysanity",
             "description": [
-                "Makes collecting each key a location, and the ability to use each key an item. [Default: Off]"
+                "Makes collecting each key a location, and the ability to use each key an item. [Default: Off]",
+                "Note that unlike the officially-implemented Celeste (Open World) game for Archipelago, the items themselves do not let you bypass key doors, but rather simply let you use the key ingame. This means you still have to take the normal route through a level to beat it."
             ],
             "type": "Toggle",
             "default": false,
@@ -231,6 +234,17 @@
                 "Beginner Silvers/Goldens Only": 2
             },
             "default": 0,
+            "group": "Locations and Items"
+        },
+        "balanced_plando":{
+            "display_name": "Balanced Plando",
+            "description": [
+                "Makes a few usually-higher-sphere locations guaranteed to have good items in them. [Default: Off]",
+                "WARNING! If Dashsanity is turned off, this has a much higher chance to fail while generating a multiworld.",
+                "Currently does nothing at the moment."
+            ],
+            "type": "Toggle",
+            "default": false,
             "group": "Locations and Items"
         },
 

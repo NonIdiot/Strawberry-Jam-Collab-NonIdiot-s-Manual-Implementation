@@ -74,9 +74,15 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymMastery"]
     if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingBelieving"]
+    match get_option_value(multiworld, player, "skip_certain_levels"):
+        case 1:
+            locationNamesToRemove += world.location_name_groups["CategoryBeginnerDropzle"]
+        case 2:
+            locationNamesToRemove += world.location_name_groups["CategoryBeginnerDropzle"]
+            locationNamesToRemove += world.location_name_groups["CategoryBeginnerAGFTS"]
     if (BeginnerLobbyIncluded(world, multiworld, player) == False):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerALL"]
-    
+
     # Add your code here to calculate which locations to remove
 
     for region in multiworld.regions:
@@ -103,7 +109,9 @@ def before_create_items_starting(item_pool: list, world: World, multiworld: Mult
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
 def before_create_items_filler(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
     # Use this hook to remove items from the item pool
+    keysanityOff = get_option_value(multiworld, player, "keysanity") == 0
     itemNamesToRemove: list[str] = [] # List of item names
+    itemNamesToRemoveOnce: list[str] = []
 
     if (get_option_value(multiworld, player, "region_locking") == 0):
         itemNamesToRemove.append("Eroded Passage Key")
@@ -133,7 +141,7 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         itemNamesToRemove.append("Progressive Grabbing")
     if (get_option_value(multiworld, player, "seeing_is_believing") != 1 and get_option_value(multiworld, player, "seeing_is_believing") != 2):
         itemNamesToRemove.append("Blindfold Cutters")
-    if (BeginnerLobbyIncluded == False):
+    if (BeginnerLobbyIncluded(world, multiworld, player) == False):
         itemNamesToRemove.append("Eroded Passage Key")
         itemNamesToRemove.append("Tidepools Key")
         itemNamesToRemove.append("Pinwheel Bay Key")
@@ -141,18 +149,34 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         itemNamesToRemove.append("Blindfold Cutters")
         itemNamesToRemove.append("Blue Mini-Heart")
         itemNamesToRemove.append("Blue Strawberry")
+        itemNamesToRemove.append("Collapsing Skyline - Mini Berry")
         itemNamesToRemove.append("Cassette Cliffs - Key 1")
         itemNamesToRemove.append("Cassette Cliffs - Key 2")
         itemNamesToRemove.append("paint - Key 1")
         itemNamesToRemove.append("A Gift From The Stars - Key 1")
-        itemNamesToRemove.append("A Gift From The Stars - Key 2")
-        itemNamesToRemove.append("Collapsing Skyline - Mini Berry")
-    if (IntermediateLobbyIncluded == False):
+    if (IntermediateLobbyIncluded(world, multiworld, player) == False):
         itemNamesToRemove.append("Abandoned Quarry Key")
         itemNamesToRemove.append("Subterranean Forest Key")
         itemNamesToRemove.append("Firefly's Domain Key")
         itemNamesToRemove.append("Moisty Caves Key")
         itemNamesToRemove.append("Crystal Origin Key")
+    if (get_option_value(multiworld, player, "heartsanity") == 0):
+        itemNamesToRemove.append("Blue Mini-Heart")
+    if (get_option_value(multiworld, player, "berrysanity") == 0):
+        itemNamesToRemove.append("Blue Strawberry")
+    if (keysanityOff):
+        itemNamesToRemove.append("Cassette Cliffs - Key 1")
+        itemNamesToRemove.append("Cassette Cliffs - Key 2")
+        itemNamesToRemove.append("paint - Key 1")
+    if (keysanityOff or get_option_value(multiworld, player, "skip_certain_levels") == 2):
+        itemNamesToRemove.append("A Gift From The Stars - Key 1")
+    if (get_option_value(multiworld, player, "heartsanity") == 1):
+        match get_option_value(multiworld, player, "skip_certain_levels"):
+            case 1:
+                itemNamesToRemoveOnce.append("Blue Mini-Heart")
+            case 2:
+                itemNamesToRemoveOnce.append("Blue Mini-Heart")
+                itemNamesToRemoveOnce.append("Blue Mini-Heart")
 
     # Add your code here to calculate which items to remove.
     #
@@ -160,9 +184,9 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     # to the list multiple times if you want to remove multiple copies of it.
 
     heartItem = next(i for i in item_pool if i.name == "Blue Mini-Heart")
-    # for itemName in itemNamesToRemove:
-    #     item = next(i for i in item_pool if i.name == itemName)
-    #     remove_specific_item(item_pool, item)
+    for itemName in itemNamesToRemoveOnce:
+        item = next(i for i in item_pool if i.name == itemName)
+        remove_specific_item(item_pool, item)
     
     # for i in item_pool:
     #     for itemName in itemNamesToRemove:
@@ -173,12 +197,53 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
         for i in item_pool.copy():
             if (i.name == itemName):
                 remove_specific_item(item_pool, i)
-
-    if (get_option_value(multiworld, player, "heartsanity_extra_hearts") != 0):
+                
+    if (get_option_value(multiworld, player, "heartsanity") == 1 and get_option_value(multiworld, player, "heartsanity_extra_hearts") != 0):
         extra_hearts_so_far = 0
         while (extra_hearts_so_far != get_option_value(multiworld, player, "heartsanity_extra_hearts")):
             item_pool.append(heartItem)
             extra_hearts_so_far += 1
+    
+    balancedPlandoLocationNamesToLock: list[str] = []
+    if (get_option_value(multiworld, player, "balanced_plando") == 1):
+        balancedPlandoLocationNamesToLock += world.location_name_groups["CategoryBalancedPlando"]
+    heartsanityBlueLocationNamesToLock: list[str] = []
+    if (get_option_value(multiworld, player, "heartsanity") == 0):
+        heartsanityBlueLocationNamesToLock += world.location_name_groups["CategoryHeartsanityBlueHeart"]
+    berrysanityBlueLocationNamesToLock: list[str] = []
+    if (get_option_value(multiworld, player, "berrysanity") == 0):
+        berrysanityBlueLocationNamesToLock += world.location_name_groups["CategoryBerrysanityBlueBerries"]
+
+    for region in multiworld.regions:
+        if region.player == player:
+            for location in list(region.locations).copy():
+                # if location.name in balancedPlandoLocationNamesToLock:
+                #     location.place_locked_item(world.create_item(""))
+                if location.name in heartsanityBlueLocationNamesToLock:
+                    location.place_locked_item(world.create_item("Blue Mini-Heart"))
+                if location.name in berrysanityBlueLocationNamesToLock:
+                    location.place_locked_item(world.create_item("Blue Strawberry"))
+                # keysanity
+                if (keysanityOff):
+                    if (location.name == "Cassette Cliffs - 3 Key"):
+                        location.place_locked_item(world.create_item("Cassette Cliffs - Key 1"))
+                    if (location.name == "Cassette Cliffs - 7 Key"):
+                        location.place_locked_item(world.create_item("Cassette Cliffs - Key 2"))
+                    if (location.name == "paint - b-berry01 Key"):
+                        location.place_locked_item(world.create_item("paint - Key 1"))
+                if (keysanityOff or get_option_value(multiworld, player, "skip_certain_levels") == 2):
+                    if (location.name == "A Gift From The Stars - Double Vision Key"):
+                        location.place_locked_item(world.create_item("A Gift From The Stars - Key 1"))
+                if (get_option_value(multiworld, player, "heartsanity") == 1):
+                    match get_option_value(multiworld, player, "skip_certain_levels"):
+                        case 1:
+                            if (location.name == "Dropzle - Clear"):
+                                location.place_locked_item(world.create_item("Blue Mini-Heart"))
+                        case 2:
+                            if (location.name == "Dropzle - Clear"):
+                                location.place_locked_item(world.create_item("Blue Mini-Heart"))
+                            if (location.name == "A Gift From The Stars - Clear"):
+                                location.place_locked_item(world.create_item("Blue Mini-Heart"))
 
     return item_pool
 

@@ -55,5 +55,5 @@
   { "name": "EventAllDashButD", "category": [], "requires": "|EventU| and |EventUR| and |EventR| and |EventDR| and |EventDL| and |EventL| and |EventUL|" },
   { "name": "EventAnyALL", "category": [], "requires": "|EventU| or |EventUR| or |EventR| or |EventDR| or |EventD| or |EventDL| or |EventL| or |EventUL|" },
   { "name": "EventHardModeHeartsideRequires", "category": [], "requires": "|EventBlindfoldHardMode| or (|EventUR| and |EventDR| and |EventD| and |EventUL| and |EventG|)" },
-  { "name": "EventBeginnerLobbyComplete", "category": [], "requires": "|EventBeginnerLobby| and |Blue Mini-Heart:21| and |EventU| and |EventUR| and |EventR| and |EventDL| and |EventL| and |EventUL| and |EventG| and |EventHardModeHeartsideRequires|" }
+  { "name": "EventBeginnerLobbyComplete", "category": [], "requires": "|EventBeginnerLobby| and |Blue Mini-Heart:21| and |EventU| and |EventUR| and |EventR| and |EventD| and |EventDL| and |EventL| and |EventUL| and |EventG| and |EventHardModeHeartsideRequires|" }
 ]
