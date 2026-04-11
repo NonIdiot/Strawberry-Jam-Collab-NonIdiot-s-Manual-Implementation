@@ -102,8 +102,8 @@
   { "name": "Coresaken City - a-01 Car", "category": ["CategoryBeginnerALL","CategoryBeginnerCar"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo|" },
   { "name": "Coresaken City - b-01 Berry 1", "category": ["CategoryBeginnerALL","CategoryBerrysanityBlueBerries"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU| and |EventAny2L|" },
   { "name": "Coresaken City - b-02 Seeded Berry 1", "category": ["CategoryBeginnerALL","CategoryBerrysanityBlueBerries"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU| and |EventUR| and |EventAny2L|" },
-  { "name": "Coresaken City - b-04 Bino 1", "category": ["CategoryBeginnerALL","CategoryBeginnerBino"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU|" },
-  { "name": "Coresaken City - b-04 Berry 1", "category": ["CategoryBeginnerALL","CategoryBerrysanityBlueBerries"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU|" },
+  { "name": "Coresaken City - b-04 Bino 1", "category": ["CategoryBeginnerALL","CategoryBeginnerBino"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU| and |EventUR| and |EventAny2L|" },
+  { "name": "Coresaken City - b-04 Berry 1", "category": ["CategoryBeginnerALL","CategoryBerrysanityBlueBerries"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU| and |EventUR| and |EventAny2L|" },
   { "name": "Coresaken City - Silver Berry", "category": ["CategoryBeginnerALL","CategoryBeginnerSilver"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU|" },
   { "name": "Coresaken City - Clear", "category": ["CategoryBeginnerALL","CategoryHeartsanityBlueHeart"], "requires": "|EventBeginnerLobby| and |EventErodedPassage| and |EventAnyTideBamboo| and |EventG| and |EventU|" },
 
