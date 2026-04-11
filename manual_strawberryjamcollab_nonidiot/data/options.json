@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ManualForArchipelago/Manual/main/schemas/Manual.options.schema.json",
-    "_comment": "Issue located. None of the options actually disable locations other than the Skip Prologue option. This will need to be fixed via hooks.",
+    "_comment": "",
     "core": {
         "death_link": {
             "default": false

@@ -1,0 +1,269 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default Manual_StrawberryJamCollab_NonIdiot Template
+
+game: Manual_StrawberryJamCollab_NonIdiot
+requires:
+  version: 0.6.6 # Version of Archipelago required for this yaml to work as expected.
+
+Manual_StrawberryJamCollab_NonIdiot:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  ####################################
+  # Win Condition and Level Skipping #
+  ####################################
+  win_condition:
+    # Choose which condition is needed to win. [Default: Heartside Clear]
+    # - Heartside Clear - Requires the player to collect the amount of Mini-Hearts for the chosen lobby, and then beat the Heartside.
+    # - Heartside Golden Berry - Requires the player to collect the amount of Mini-Hearts for the chosen lobby, and then collect the Golden Berry in the Heartside.
+    # - All Beginner Levels Cleared (No Heartside) - Requires the player to clear all non-Heartside levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)
+    # - All Beginner Levels Cleared - Requires the player to clear all levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)
+    # - Berry Hunt - Requires the player to collect a certain percentage of the strawberries in the item pool.
+    # - Berry Collection - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.
+    # - Catventure - Requires the player to pet all cats. (Automatically enables Catsanity.)
+    heartside clear: 50
+    heartside golden berry: 0
+    all beginner levels cleared (no heartside): 0
+    all beginner levels cleared: 0
+    berry hunt: 0
+    berry collection: 0
+    catventure: 0
+
+  berry_percent:
+    # The percentage of strawberry items/locations for Berry Hunt and Berry Collection respectively that are needed to goal. [Default: 80]
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+    a tenth of the strawberries: 0 # equivalent to 10
+    a quarter of the strawberries: 0 # equivalent to 25
+    half of the strawberries: 0 # equivalent to 50
+    three quarters of the strawberries: 0 # equivalent to 75
+    a default portion of the strawberries: 0 # equivalent to 80
+    most of the strawberries: 0 # equivalent to 95
+    literally every single strawberry: 0 # equivalent to 100
+    default: 50 # equivalent to 0
+
+  max_difficulty:
+    # What lobby is selected as the highest difficulty. [Default: Beginner Lobby]
+    beginner lobby: 50
+
+  included_lobbies:
+    # Decides whether only the maximum difficulty lobby or all lobbies under and including the maximum difficulty lobby are included in randomization. [Default: Selected and Below (Progression-Locked)]
+    # - Only Maximum Difficulty - Makes only the lobby selected as the Maximum Difficulty included in the randomization. For instance, if the Maximum Difficulty is selected as Advanced Lobby, all other lobbies will not be included in giving checks or recieving items.
+    # - Selected and Below - Makes the lobby selected as Maximum Difficulty and all other lobbies below it included in the randomization. For instance, if the Maximum Difficulty is selected as Advanced Lobby, then the Beginner, Intermediate, and Advanced Lobbies will all be included in giving checks and recieving items.
+    # - Selected and Below (Progression-Locked) - Same as Selected and Below, but making it so that future lobbies can only be entered once the Heartside of the previous lobby is completed. For example, the Intermediate Lobby cannot be entered until the Beginner Lobby's Heartside is completed, the Advanced Lobby cannot be entered until the Intermediate Lobby's Heartside is completed, etc.
+    only maximum difficulty: 0
+    selected and below: 0
+    selected and below (progression-locked): 50
+
+  skip_prologue:
+    # Makes all movement restrictions not apply for Prologue. When off, the player is given two locations at the start of Prologue, as you need one of the left dashes and one of the right dashes to clear Prologue and move on to any Lobby. [Default: On]
+    'false': 0
+    'true': 50
+
+  skip_certain_levels:
+    # Disables any checks from the configured levels that would rather be skipped by some. Note that you may be required to beat these levels for certain goals (in which case, movement restrictions do not apply for these levels), however the items that come from the level clears will be guaranteed junk, and the Mini-Heart is guaranteed to be a Mini-Heart regardless of other settings. [Default: Off]
+    # - Off - Doesn't disable any checks from the below listed levels.
+    # - No Dropzle - Replaces all item locations from Dropzle with a "Pixel Perfect" junk item.
+    # - No Dropzle or A Gift From The Stars - Replaces all item locations from Dropzle with a "Pixel Perfect" junk item and all item locations from A Gift From The Stars with a "Borrowed Time" junk item.
+    'off': 0
+    no dropzle: 50
+    no dropzle or a gift from the stars: 0
+
+  skip_gyms:
+    # Disables any checks from gyms. [Default: Off]
+    'false': 50
+    'true': 0
+
+  #######################
+  # Locations and Items #
+  #######################
+  dashsanity:
+    # Makes each dash direction a check, rather than making all dashes as a single check. [Default: On]
+    'false': 0
+    'true': 50
+
+  progressive_grabbing:
+    # Makes Grabbing and Neutral Jumps into two Progressive Grabbing checks, where having one allows Neutral Jumps and having two allows Neutral Jumps and Grabbing. When off, the Grabbing and Neutral Jumps are separate items. [Default: On]
+    'false': 0
+    'true': 50
+
+  heartsanity:
+    # Shuffles each Mini-Heart into the pool, requiring all of a lobby's corresponding Mini-Heart items to be collected before being able to get past their Heart Door. [Default: On]
+    'false': 0
+    'true': 50
+
+  heartsanity_extra_hearts:
+    # If Heartsanity is enabled, adds a chosen amount of additional Mini-Hearts for each lobby. The maximum is 10. [Default: 5]
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 10
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-10: 0 # random value between 0 and 10
+    2: 50 # equivalent to 0
+    a pair: 0 # equivalent to 2
+    default amount: 0 # equivalent to 5
+    maximum overdrive!: 0 # equivalent to 10
+    default: 0 # equivalent to 0
+
+  berrysanity:
+    # Shuffles each Strawberry into the pool. May cause issues if this option and too many other options are disabled. [Default: On]
+    'false': 0
+    'true': 50
+
+  region_locking:
+    # Prevents the player from entering or standing on certain areas until the corresponding Region Key item is acquired. This can make multiworld Spheres smaller, allowing for less going back to levels you've been in already. [Default: On]
+    'false': 0
+    'true': 50
+
+  binosanity:
+    # Makes looking through each binoculars a location. [Default: Off]
+    'false': 50
+    'true': 0
+
+  catsanity:
+    # Makes petting each cat a location. [Default: Off]
+    'false': 50
+    'true': 0
+
+  keysanity:
+    # Makes collecting each key a location, and the ability to use each key an item. [Default: Off]
+    'false': 50
+    'true': 0
+
+  carsanity:
+    # Makes jumping on each car a location. [Default: Off]
+    'false': 50
+    'true': 0
+
+  enable_silvers_goldens:
+    # Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]
+    # - Off - Makes silvers and goldens not give checks.
+    # - Beginner Silvers Only - Makes silvers and rainbows from the Beginner Lobby give checks.
+    # - Beginner Silvers/Goldens Only - Makes silvers, rainbows, and goldens from the Beginner Lobby give checks.
+    'off': 50
+    beginner silvers only: 0
+    beginner silvers/goldens only: 0
+
+  ##########################
+  # Level-Specific Options #
+  ##########################
+  seeing_is_believing:
+    # Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]
+    # - Singleplayer Intended - Makes Seeing Is Believing require the player to play in NotYourBadeline's "Singleplayer Mode", making logic only account for listening to instructions.
+    # - Blindfold Cutters - Same as Singleplayer Intended, except for after the player acquires the Blindfold Cutters, they are allowed to play through the map without "Singleplayer Mode".
+    # - Blindfold Cutters (Hard Mode) - Same as Blindfold Cutters, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress.
+    # - Pre-Cut Blindfolds - Allows the player to play through Seeing Is Believing however they'd like.
+    # - Pre-Cut Blindfolds (Hard Mode) - Same as Pre-Cut Blindfolds, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress.
+    singleplayer intended: 0
+    blindfold cutters: 50
+    blindfold cutters (hard mode): 0
+    pre-cut blindfolds: 0
+    pre-cut blindfolds (hard mode): 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    ["CategoryBeginnerSilver", "CategoryBeginnerGolden"]
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
