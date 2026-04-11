@@ -3,54 +3,54 @@
         "yaml_option": ["!skip_prologue"]
     },
     "CategoryBeginnerCat": {
-
+        "hidden": true
     },
     "CategoryBeginnerBench": {
-        
+        "hidden": true
     },
     "CategoryBeginnerBino": {
-        
+        "hidden": true
     },
     "CategoryBeginnerRegionVisit": {
-        
+        "hidden": true
     },
     "CategoryBeginnerGymBino": {
-        
+        "hidden": true
     },
     "CategoryBeginnerGymMastery": {
-        
+        "hidden": true
     },
     "CategoryBeginnerSilver": {
-        
+        "hidden": true
     },
     "CategoryBeginnerGolden": {
-        
+        "hidden": true
     },
     "CategoryBeginnerCar": {
-        
+        "hidden": true
     },
     "CategoryBeginnerSeeingBelieving": {
-        
+        "hidden": true
     },
     "CategoryBeginnerDropzle": {
-        
+        "hidden": true
     },
     "CategoryBeginnerAGFTS": {
-        
+        "hidden": true
     },
     "CategoryBeginnerALL": {
         
     },
     "CategoryStrawberries": {
-
+        "hidden": true
     },
     "CategoryBalancedPlando": {
-
+        "hidden": true
     },
     "CategoryHeartsanityBlueHeart": {
-        
+        "hidden": true
     },
     "CategoryBerrysanityBlueBerries": {
-        
+        "hidden": true
     }
 }
