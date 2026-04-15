@@ -275,8 +275,10 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
                     junkCount += 1
 
         if (junkCount > 30):
-            sillyJunkCount = len(sillyJunkOnce) + 1
+            sillyJunkCount = 1
             logging.info("[StrawberryJamNonIdiot Debug Message] Adding silly filler names!")
+            logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkOnce: {len(sillyJunkOnce)}")
+            logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkMisc: {len(sillyJunkMisc)}")
 
     for itemName in itemNamesToPale:
         for i in item_pool.copy():
@@ -291,6 +293,7 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
                             item_pool.append(world.create_item(world.random.choice(sillyJunkMisc)))
                     else:
                         item_pool.append(world.create_item(sillyJunkOnce[sillyJunkCount-1]))
+                        sillyJunkCount += 1
                 else:
                     item_pool.append(world.create_item("Pale Strawberry"))
         
