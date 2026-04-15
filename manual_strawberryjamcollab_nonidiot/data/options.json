@@ -16,7 +16,7 @@
                 "- All Beginner Levels Cleared (No Heartside) - Requires the player to clear all non-Heartside levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)",
                 "- All Beginner Levels Cleared - Requires the player to clear all levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)",
                 "- Berry Hunt - Requires the player to collect a certain percentage of the strawberries in the item pool.",
-                "- Berry Collection - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.",
+                "- Berry Collection (NOT WORKING) - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.",
                 "- Catventure - Requires the player to pet all cats. (Automatically enables Catsanity.)"
             ],
             "type": "Choice",
@@ -242,6 +242,15 @@
                 "Makes a few usually-higher-sphere locations guaranteed to have good items in them. [Default: Off]",
                 "WARNING! If Dashsanity is turned off, this has a much higher chance to fail while generating a multiworld.",
                 "Currently does nothing at the moment."
+            ],
+            "type": "Toggle",
+            "default": false,
+            "group": "Locations and Items"
+        },
+        "silly_filler":{
+            "display_name": "Silly Filler",
+            "description": [
+                "Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. [Default: Off]"
             ],
             "type": "Toggle",
             "default": false,

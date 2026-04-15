@@ -1,0 +1,19 @@
+TODO:
+- Implementation of the Berry Collection win condition, which currently does not work.
+- Implementation of the Balanced Plando option, which currently does nothing.
+- Converting the existing Intermediate Lobby logic (which is already written) into locations/items to make it compatible with the existing Manual.
+- Writing the rest of the Advanced Lobby Logic, and then converting it into locations/items to make it compatible.
+- Remove some of the outdated comments and things under the hood.
+- Additional logic changes and bug fixes, if needed.
+POTENTIAL TODO:
+- Custom Client(?) (and possibly custom graphics to go alongside it.)
+- Writing Expert Lobby Logic, and then converting it into locations/items to make it compatible.
+- Writing Grandmaster Lobby Logic, and then converting it into locations/items to make it compatible.
+- Adding the "Grandmaster+ In Previous Lobbies" option, for allowing checks in higher-difficulty rooms (such as the Grandmaster room Cat/NiceView in Supernautica or the True Ending Heart/Cats in Call of the Void)
+- Second Dash configuration option? (Forces player to use one dash in normally two-dash areas.)
+- More secrets to the randomization through Secretsanity (Maybe make Secretsanity be Low and High for options, no "off" at all)
+- Some way for me to more easily convert existing logic into "Overall" logic on the spreadsheet???
+- Sharing the spreadsheet to the masses
+- Helper mod that helps players be reminded of what abilities they have, what levels they can enter with their current keys/abilities, helps with enabling/disabling certain Extended Variants automatically, etc
+- More configuration! (How many hearts for each Heartside with one option per, whether Pale Strawberries should count towards Berry Hunt goal, etc)
+- Different filler (disabled by default, but has some funny names like "Nonexistent Mini-Heart" or "Speedometer Access" or "Dash Count Access" or stuff like that)

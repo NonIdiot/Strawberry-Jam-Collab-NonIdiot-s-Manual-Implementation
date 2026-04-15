@@ -262,12 +262,37 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
     #     item = next(i for i in item_pool if i.name == itemName)
     #     item.name = "Pale Strawberry"
 
+    junkCount = 0
+    sillyJunkCount = 0
+    sillyJunkMisc: list[str] = ["Nonexistent Mini-Heart", "Invisible Berry", "Dropzle Puzzle Fragment", "Mini-Mini-Mini-Mini-Mini Heart", "Too-Microscopic-To-Count-Towards-Strawberry-Amount Strawberry", "Raspberry", "Raspberry"]
+    sillyJunkOnce: list[str] = ["Speedometer Access", "Dash Count Access", "Cassoosted Fupers", "Sumber Key", "Lava Access", "Tungsten Cube Access", "Raspberry Cake", "Liar's Cake"]
+    world.random.shuffle(sillyJunkMisc)
+    world.random.shuffle(sillyJunkOnce)
+    if (get_option_value(multiworld, player, "silly_filler") == 1):
+        for itemName in itemNamesToPale:
+            for i in item_pool.copy():
+                if (i.name == itemName):
+                    junkCount += 1
+
+        if (junkCount > 30):
+            sillyJunkCount = len(sillyJunkOnce) + 1
+            logging.info("[StrawberryJamNonIdiot Debug Message] Adding silly filler names!")
+
     for itemName in itemNamesToPale:
         for i in item_pool.copy():
             if (i.name == itemName):
                 # i.name = "Pale Strawberry"
                 remove_specific_item(item_pool, i)
-                item_pool.append(world.create_item("Pale Strawberry"))
+                if (sillyJunkCount > 0):
+                    if (sillyJunkCount > len(sillyJunkOnce)):
+                        if (world.random.randint(0,2) == 0):
+                            item_pool.append(world.create_item("Pale Strawberry"))
+                        else:
+                            item_pool.append(world.create_item(world.random.choice(sillyJunkMisc)))
+                    else:
+                        item_pool.append(world.create_item(sillyJunkOnce[sillyJunkCount-1]))
+                else:
+                    item_pool.append(world.create_item("Pale Strawberry"))
         
     return item_pool
 
