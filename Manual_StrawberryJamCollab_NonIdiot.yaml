@@ -97,10 +97,10 @@ Manual_StrawberryJamCollab_NonIdiot:
     a quarter of the strawberries: 0 # equivalent to 25
     half of the strawberries: 0 # equivalent to 50
     three quarters of the strawberries: 0 # equivalent to 75
-    a default portion of the strawberries: 0 # equivalent to 80
+    a default portion of the strawberries: 50 # equivalent to 80
     most of the strawberries: 0 # equivalent to 95
     literally every single strawberry: 0 # equivalent to 100
-    default: 50 # equivalent to 0
+    default: 0 # equivalent to 80
 
   max_difficulty:
     # What lobby is selected as the highest difficulty. [Default: Beginner Lobby]
@@ -206,6 +206,18 @@ Manual_StrawberryJamCollab_NonIdiot:
     'off': 50
     beginner silvers only: 0
     beginner silvers/goldens only: 0
+
+  balanced_plando:
+    # Makes a few usually-higher-sphere locations guaranteed to have good items in them. [Default: Off]
+    # WARNING! If Dashsanity is turned off, this has a much higher chance to fail while generating a multiworld.
+    # Currently does nothing at the moment.
+    'false': 50
+    'true': 0
+
+  silly_filler:
+    # Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. [Default: Off]
+    'false': 50
+    'true': 0
 
   ##########################
   # Level-Specific Options #
