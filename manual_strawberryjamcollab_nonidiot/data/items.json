@@ -3,7 +3,7 @@
     "count": 21,
     "name": "Blue Mini-Heart",
     "category": [],
-    "progression": true
+    "progression_skip_balancing": true
   },
   {
     "count": 54,
