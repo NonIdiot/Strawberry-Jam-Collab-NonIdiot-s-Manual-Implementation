@@ -17,6 +17,8 @@ POTENTIAL TODO:
 - Helper mod that helps players be reminded of what abilities they have, what levels they can enter with their current keys/abilities, helps with enabling/disabling certain Extended Variants automatically, etc
 - More configuration! (How many hearts for each Heartside with one option per, whether Pale Strawberries should count towards Berry Hunt goal, etc)
 - Poptracker pack! (This includes implementing the regions.json feature of Manual.)
+- Use "sort-key" to sort locations by region
+- Rename some of the Categories and then make them visible again
 
 TO-DOED-ALREADY:
 - Different filler (disabled by default, but has some funny names like "Nonexistent Mini-Heart" or "Speedometer Access" or "Dash Count Access" or stuff like that)

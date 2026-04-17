@@ -14,6 +14,7 @@ Some basic information to know:
 - Logic does not take into account backtracking, so you may need to use Restart Chapter now and then. This includes in the Lobbies themselves, too (as doing so brings you to their default spawn point). In fact, you can't get all Sphere 1 locations without using Restart Chapter at least once (if Skip Prologue is true).
 - You may use the Debug Map (press F6) to warp past the Heart Gate in a lobby if you have enough of the lobby's Mini-Hearts in the Archipelago. However, it is discouraged to use for any purposes other than this.
 - If you have Deathlink on, you are in track of when you send one. In regular Celeste (Open World), there is an amnesty system that makes it so that each X amount of deaths sends a single deathlink. I would personally recommend installing the Death Tracker mod and choosing an amnesty number that is easily divisble (such as 10, 20, 25, 50, etc) to make cause a death. There is no YAML option for amnesty, so tracking this is entirely on the player.
+- The filler added by the Silly Filler does not have to be followed! (Ex. One of the Silly Filler names is Speedometer Access, but you're totally okay to use the Speedometer before obtaining that item.)
 
 Additional things to know, due to this being a work in progress:
 - Only Beginner Lobby is supported currently, however it is planned to include at least Intermediate and Advanced Lobbies too.
