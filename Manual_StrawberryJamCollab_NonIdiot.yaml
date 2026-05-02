@@ -63,6 +63,18 @@ Manual_StrawberryJamCollab_NonIdiot:
     full: 50
     minimal: 0
 
+  filler_traps:
+    # IGNORE THIS LMAO
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
   ####################################
   # Win Condition and Level Skipping #
   ####################################
@@ -73,7 +85,7 @@ Manual_StrawberryJamCollab_NonIdiot:
     # - All Beginner Levels Cleared (No Heartside) - Requires the player to clear all non-Heartside levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)
     # - All Beginner Levels Cleared - Requires the player to clear all levels of the chosen lobby. (This works better for if you want to play Only Maximum Difficulty without using Debug Map.)
     # - Berry Hunt - Requires the player to collect a certain percentage of the strawberries in the item pool.
-    # - Berry Collection - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.
+    # - Berry Collection (NOT WORKING) - Requires the player to collect a certain percentage of the strawberry locations that are in-logic.
     # - Catventure - Requires the player to pet all cats. (Automatically enables Catsanity.)
     heartside clear: 50
     heartside golden berry: 0
@@ -125,8 +137,8 @@ Manual_StrawberryJamCollab_NonIdiot:
     # - Off - Doesn't disable any checks from the below listed levels.
     # - No Dropzle - Replaces all item locations from Dropzle with a "Pixel Perfect" junk item.
     # - No Dropzle or A Gift From The Stars - Replaces all item locations from Dropzle with a "Pixel Perfect" junk item and all item locations from A Gift From The Stars with a "Borrowed Time" junk item.
-    'off': 0
-    no dropzle: 50
+    'off': 50
+    no dropzle: 0
     no dropzle or a gift from the stars: 0
 
   skip_gyms:
@@ -162,14 +174,15 @@ Manual_StrawberryJamCollab_NonIdiot:
     random-low: 0 # random value weighted towards lower values
     random-high: 0 # random value weighted towards higher values
     random-range-0-10: 0 # random value between 0 and 10
-    2: 50 # equivalent to 0
-    a pair: 0 # equivalent to 2
-    default amount: 0 # equivalent to 5
+    off: 0 # equivalent to 0
+    a pair: 50 # equivalent to 2
+    moderate amount: 0 # equivalent to 5
     maximum overdrive!: 0 # equivalent to 10
-    default: 0 # equivalent to 0
+    default: 0 # equivalent to 2
 
   berrysanity:
     # Shuffles each Strawberry into the pool. May cause issues if this option and too many other options are disabled. [Default: On]
+    # Also note that playing without this nor Heartsanity may make most levels only useful for your win condition requirements and have no checks from other worlds.
     'false': 0
     'true': 50
 
@@ -179,7 +192,7 @@ Manual_StrawberryJamCollab_NonIdiot:
     'true': 50
 
   binosanity:
-    # Makes looking through each binoculars a location. [Default: Off]
+    # Makes looking through each set of binoculars a location. [Default: Off]
     'false': 50
     'true': 0
 
@@ -190,6 +203,7 @@ Manual_StrawberryJamCollab_NonIdiot:
 
   keysanity:
     # Makes collecting each key a location, and the ability to use each key an item. [Default: Off]
+    # Note that unlike the officially-implemented Celeste (Open World) game for Archipelago, the items themselves do not let you bypass key doors, but rather simply let you use the key ingame. This means you still have to take the normal route through a level to beat it.
     'false': 50
     'true': 0
 
@@ -215,7 +229,7 @@ Manual_StrawberryJamCollab_NonIdiot:
     'true': 0
 
   silly_filler:
-    # Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. [Default: Off]
+    # Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. (The item names are replaced AFTER Traps are filled.) [Default: Off]
     'false': 50
     'true': 0
 
@@ -223,7 +237,7 @@ Manual_StrawberryJamCollab_NonIdiot:
   # Level-Specific Options #
   ##########################
   seeing_is_believing:
-    # Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]
+    # Makes the way that Seeing Is Believing is required to be played be differently based on what this option is configured to. [Default: Blindfold Cutters]
     # - Singleplayer Intended - Makes Seeing Is Believing require the player to play in NotYourBadeline's "Singleplayer Mode", making logic only account for listening to instructions.
     # - Blindfold Cutters - Same as Singleplayer Intended, except for after the player acquires the Blindfold Cutters, they are allowed to play through the map without "Singleplayer Mode".
     # - Blindfold Cutters (Hard Mode) - Same as Blindfold Cutters, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress.
@@ -234,6 +248,87 @@ Manual_StrawberryJamCollab_NonIdiot:
     blindfold cutters (hard mode): 0
     pre-cut blindfolds: 0
     pre-cut blindfolds (hard mode): 0
+
+  #########
+  # Traps #
+  #########
+  trap_fill_percentage:
+    # The amount (in percent) of Pale Strawberries that are replaced with various traps. [Default: 25]
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    25: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  slow_trap_weight:
+    # Sets your game speed to 0.5x for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  fast_trap_weight:
+    # Sets your game speed to 1.6x for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  assistance_trap_weight:
+    # Enables Dash Assist for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    # If this is set to something that isn't Off, the player is required to have Assist Mode or Variants Mode on their file.
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  monochrome_trap_weight:
+    # Makes your screen monochrome for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  inverted_controls_trap_weight:
+    # Inverts your horizontal and vertical controls for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  invisible_motion_trap_weight:
+    # Enables the Invisible Motion variant for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    # If this is set to something that isn't Off, the player is required to have Variants Mode on their file.
+    # DO NOT ENABLE THIS IF YOU HAVE NOT UNLOCKED VARIANTS YET!
+    'off': 50
+    low weight: 0
+    medium weight: 0
+    high weight: 0
+
+  pumber_trap_weight:
+    # Makes your player visually look like they're in hit map Pumber for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  blur_trap_weight:
+    # Blurs the screen for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
+
+  screen_flip_trap_weight:
+    # Flips the screen upside-down for a user-chosen amount of rooms/deaths. [Default: Medium Weight]
+    'off': 0
+    low weight: 0
+    medium weight: 50
+    high weight: 0
 
   ###########################
   # Item & Location Options #
@@ -266,7 +361,7 @@ Manual_StrawberryJamCollab_NonIdiot:
 
   exclude_locations:
     # Prevent these locations from having an important item.
-    ["CategoryBeginnerSilver", "CategoryBeginnerGolden"]
+    []
 
   priority_locations:
     # Prevent these locations from having an unimportant item.

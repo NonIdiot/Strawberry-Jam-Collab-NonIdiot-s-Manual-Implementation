@@ -274,5 +274,59 @@
     "name": "Liar's Cake",
     "category": [],
     "filler": true
+  },
+  {
+    "count": 0,
+    "name": "Slow Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Fast Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Assistance Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Monochrome Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Inverted Controls Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Invisible Motion Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Pumber Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Blur Trap",
+    "category": [],
+    "trap": true
+  },
+  {
+    "count": 0,
+    "name": "Screen Flip Trap",
+    "category": [],
+    "trap": true
   }
 ]

@@ -72,8 +72,8 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
     if (get_option_value(multiworld, player, "skip_gyms") == 1):
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymBino"]
         locationNamesToRemove += world.location_name_groups["CategoryBeginnerGymMastery"]
-    if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
-        locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingBelieving"]
+    # if (get_option_value(multiworld, player, "seeing_is_believing") == 0):
+    #     locationNamesToRemove += world.location_name_groups["CategoryBeginnerSeeingBelieving"]
     match get_option_value(multiworld, player, "skip_certain_levels"):
         case 1:
             locationNamesToRemove += world.location_name_groups["CategoryBeginnerDropzle"]
@@ -266,26 +266,43 @@ def after_create_items(item_pool: list, world: World, multiworld: MultiWorld, pl
     sillyJunkCount = 0
     sillyJunkMisc: list[str] = ["Nonexistent Mini-Heart", "Invisible Berry", "Dropzle Puzzle Fragment", "Mini-Mini-Mini-Mini-Mini Heart", "Too-Microscopic-To-Count-Towards-Strawberry-Amount Strawberry", "Raspberry", "Raspberry"]
     sillyJunkOnce: list[str] = ["Speedometer Access", "Dash Count Access", "Cassoosted Fupers", "Sumber Key", "Lava Access", "Tungsten Cube Access", "Raspberry Cake", "Liar's Cake"]
+    for itemName in itemNamesToPale:
+        for i in item_pool.copy():
+            if (i.name == itemName):
+                junkCount += 1
+    if (get_option_value(multiworld, player, "silly_filler") == 1 and junkCount > 30):
+        sillyJunkCount = 1
+        logging.info("[StrawberryJamNonIdiot Debug Message] Adding silly filler names!")
+        logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkOnce: {len(sillyJunkOnce)}")
+        logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkMisc: {len(sillyJunkMisc)}")
+    trapFillLeft = int(junkCount*(get_option_value(multiworld, player, "trap_fill_percentage")/100)) # pyright: ignore[reportOperatorIssue]
+
+    trapFillPool: list[str] = []
+    trapFillNum: list[int] = [0,1,2,3,4,5,6,7,8]
+    trapFillNames: list[str] = ["slow_trap_weight","fast_trap_weight","assistance_trap_weight","monochrome_trap_weight","inverted_controls_trap_weight","invisible_motion_trap_weight","pumber_trap_weight","blur_trap_weight","screen_flip_trap_weight"]
+    trapItemNames: list[str] = ["Slow Trap","Fast Trap","Assistance Trap","Monochrome Trap","Inverted Controls Trap","Invisible Motion Trap","Pumber Trap","Blur Trap","Screen Flip Trap"]
+    if (trapFillLeft != 0):
+        for trapNum in trapFillNum:
+            myCoolCount = get_option_value(multiworld, player, trapFillNames[trapNum])
+            while myCoolCount > 0: # pyright: ignore[reportOperatorIssue]
+                trapFillPool.append(trapItemNames[trapNum])
+                myCoolCount -= 1 # pyright: ignore[reportOperatorIssue]
+    trapsEnabled = len(trapFillPool) > 0
+    logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of trapFillPool: {len(trapFillPool)}")
+    
     world.random.shuffle(sillyJunkMisc)
     world.random.shuffle(sillyJunkOnce)
-    if (get_option_value(multiworld, player, "silly_filler") == 1):
-        for itemName in itemNamesToPale:
-            for i in item_pool.copy():
-                if (i.name == itemName):
-                    junkCount += 1
-
-        if (junkCount > 30):
-            sillyJunkCount = 1
-            logging.info("[StrawberryJamNonIdiot Debug Message] Adding silly filler names!")
-            logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkOnce: {len(sillyJunkOnce)}")
-            logging.info(f"[StrawberryJamNonIdiot Debug Message] Length of sillyJunkMisc: {len(sillyJunkMisc)}")
+    world.random.shuffle(trapFillPool)
 
     for itemName in itemNamesToPale:
         for i in item_pool.copy():
             if (i.name == itemName):
                 # i.name = "Pale Strawberry"
                 remove_specific_item(item_pool, i)
-                if (sillyJunkCount > 0):
+                if (trapFillLeft > 0):
+                    trapFillLeft -= 1
+                    item_pool.append(world.create_item(world.random.choice(trapFillPool)))
+                elif (sillyJunkCount > 0):
                     if (sillyJunkCount > len(sillyJunkOnce)):
                         if (world.random.randint(0,2) == 0):
                             item_pool.append(world.create_item("Pale Strawberry"))

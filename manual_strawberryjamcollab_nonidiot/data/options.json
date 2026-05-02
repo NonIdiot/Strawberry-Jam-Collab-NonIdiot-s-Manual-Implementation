@@ -251,7 +251,7 @@
         "silly_filler":{
             "display_name": "Silly Filler",
             "description": [
-                "Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. [Default: Off]"
+                "Replaces the names of some of the Pale Strawberries with certain silly item names that are not required to have any effect on gameplay. (The item names are replaced AFTER Traps are filled.) [Default: Off]"
             ],
             "type": "Toggle",
             "default": false,
@@ -261,9 +261,9 @@
 
 
         "seeing_is_believing":{
-            "display_name": "Makes the way that Seeing Is Believing is required to be played be differently based on what this option is configured to. [Default: Blindfold Cutters]",
+            "display_name": "Seeing Is Believing",
             "description": [
-                "Makes the silvers for the given areas locations. Also adds 3 locations for collecting the Rainbow Berry, which can be obtained after collecting all silver berry locations from the configured Lobby(/Lobbies). [Default: Off]",
+                "Makes the way that Seeing Is Believing is required to be played be differently based on what this option is configured to. [Default: Blindfold Cutters]",
                 "- Singleplayer Intended - Makes Seeing Is Believing require the player to play in NotYourBadeline's \"Singleplayer Mode\", making logic only account for listening to instructions.",
                 "- Blindfold Cutters - Same as Singleplayer Intended, except for after the player acquires the Blindfold Cutters, they are allowed to play through the map without \"Singleplayer Mode\".",
                 "- Blindfold Cutters (Hard Mode) - Same as Blindfold Cutters, but also makes the Beginner Heartside Flag 17 require memorization of the room's layout (or periodically turning on hitboxes) in order to progress.",
@@ -278,8 +278,160 @@
                 "Pre-Cut Blindfolds": 3,
                 "Pre-Cut Blindfolds (Hard Mode)": 4
             },
-            "default": 0,
+            "default": 1,
             "group": "Level-Specific Options"
+        },
+
+        
+
+        "trap_fill_percentage":{
+            "display_name": "Trap Fill Percentage",
+            "description": [
+                "The amount (in percent) of Pale Strawberries that are replaced with various traps. [Default: 25]"
+            ],
+            "type": "Range",
+            "range_start": 0,
+            "range_end": 100,
+            "default": 25,
+            "group": "Traps"
+        },
+        "slow_trap_weight":{
+            "display_name": "Slow Trap Weight",
+            "description": [
+                "Sets your game speed to 0.5x for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "fast_trap_weight":{
+            "display_name": "Fast Trap Weight",
+            "description": [
+                "Sets your game speed to 1.6x for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "assistance_trap_weight":{
+            "display_name": "Assistance Trap Weight",
+            "description": [
+                "Enables Dash Assist for a user-chosen amount of rooms/deaths. [Default: Medium Weight]",
+                "If this is set to something that isn't Off, the player is required to have Assist Mode or Variants Mode on their file."
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "monochrome_trap_weight":{
+            "display_name": "Monochrome Trap Weight",
+            "description": [
+                "Makes your screen monochrome for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "inverted_controls_trap_weight":{
+            "display_name": "Inverted Controls Trap Weight",
+            "description": [
+                "Inverts your horizontal and vertical controls for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "invisible_motion_trap_weight":{
+            "display_name": "Invisible Motion Trap Weight",
+            "description": [
+                "Enables the Invisible Motion variant for a user-chosen amount of rooms/deaths. [Default: Medium Weight]",
+                "If this is set to something that isn't Off, the player is required to have Variants Mode on their file.",
+                "DO NOT ENABLE THIS IF YOU HAVE NOT UNLOCKED VARIANTS YET!"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 0,
+            "group": "Traps"
+        },
+        "pumber_trap_weight":{
+            "display_name": "Pumber Trap Weight",
+            "description": [
+                "Makes your player visually look like they're in hit map Pumber for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "blur_trap_weight":{
+            "display_name": "Blur Trap Weight",
+            "description": [
+                "Blurs the screen for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
+        },
+        "screen_flip_trap_weight":{
+            "display_name": "Screen Flip Trap Weight",
+            "description": [
+                "Flips the screen upside-down for a user-chosen amount of rooms/deaths. [Default: Medium Weight]"
+            ],
+            "type": "Choice",
+            "values": {
+                "Off": 0,
+                "Low Weight": 1,
+                "Medium Weight": 2,
+                "High Weight": 3
+            },
+            "default": 2,
+            "group": "Traps"
         }
     }
 }

@@ -14,8 +14,23 @@ Some basic information to know:
 - Logic does not take into account backtracking, so you may need to use Restart Chapter now and then. This includes in the Lobbies themselves, too (as doing so brings you to their default spawn point). In fact, you can't get all Sphere 1 locations without using Restart Chapter at least once (if Skip Prologue is true).
 - You may use the Debug Map (press F6) to warp past the Heart Gate in a lobby if you have enough of the lobby's Mini-Hearts in the Archipelago. However, it is discouraged to use for any purposes other than this.
 - If you have Deathlink on, you are in track of when you send one. In regular Celeste (Open World), there is an amnesty system that makes it so that each X amount of deaths sends a single deathlink. I would personally recommend installing the Death Tracker mod and choosing an amnesty number that is easily divisble (such as 10, 20, 25, 50, etc) to make cause a death. There is no YAML option for amnesty, so tracking this is entirely on the player.
+- Same thing for traps. You are in charge of enabling the options required, keeping track of how many rooms/deaths (Default is 3 rooms) that you've gone through since getting the trap, and removing the options once you have finished with the trap. (Also, you get to choose whether or not traps stack their length together if you get two at the same time.)
 - The filler added by the Silly Filler does not have to be followed! (Ex. One of the Silly Filler names is Speedometer Access, but you're totally okay to use the Speedometer before obtaining that item.)
+- If you have traps enabled, it's recommended to make a save with Variants and Assist Mode enabled. If you don't have Variants unlocked from beating all vanilla C-sides yet, don't enable the Invisible Motion trap.
 
 Additional things to know, due to this being a work in progress:
 - Only Beginner Lobby is supported currently, however it is planned to include at least Intermediate and Advanced Lobbies too.
 - Not all out-of-logic stuff is inherently a bug. If you get an item before you're supposed to in-logic without ignoring keys or movement restrictions, you can press F1 in the Manual client to allow out-of-logic location checking. Most of the out-of-logic stuff is due to either silly oversight, or just doing a trick too many times and giving up to assume that the trick is Low Grandmaster or higher.
+
+
+
+Trap Descriptions:
+- Slow Trap: Under Extended Variants -> Gameplay Tweaks, set Game Speed to x0.5.
+- Fast Trap: Under Extended Variants -> Gameplay Tweaks, set Game Speed to x1.6.
+- Assistance Trap: Under Variants or under Assist Options, set Dash Assist to ON.
+- Monochrome Trap: Under Extended Variants -> Visual, set Color Grading to Black & White.
+- Inverted Controls Trap: Under Extended Variants -> Gameplay Tweaks, set Invert Horizontal Controls to ON, and Invert Vertical Controls to ON.
+- Invisible Motion Trap: Under Variants, set Invisible Motion to ON.
+- Pumber Trap: Under Extended Variants -> Visual, set Madeline is a Silhouette to ON, and Dash Trail All The Time to ON.
+- Blur Trap: Under Extended Variants -> Visual, set Blur Effect to 50%.
+- Screen Flip Trap: Under Extended Variants -> Visual, set Upside Down to ON.
